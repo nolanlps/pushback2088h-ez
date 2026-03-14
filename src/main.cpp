@@ -257,6 +257,37 @@ void opcontrol() {
     // Put more user control code here!
     // . . .
 
+
+
+    if(master.get_digital_new_press(DIGITAL_R2)){
+            hood.toggle();
+    }
+
+    if(master.get_digital(DIGITAL_R2) && (master.get_digital(DIGITAL_L1)) && (master.get_digital(DIGITAL_RIGHT))){
+            midDescore.extend();
+    }
+
+
+    if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
+            intakeall(12000);
+      } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+            intakemid(12000);
+      } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+            intakeall(-12000);
+      } else {
+            intakeall(0);
+    }  
+
+
+    if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        wing.toggle();
+    }
+    
+    if(master.get_digital_new_press(DIGITAL_Y)) {
+        matchload.toggle();
+    }
+
+
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
