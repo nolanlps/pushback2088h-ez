@@ -7,9 +7,9 @@ extern Drive chassis;
 
 // Your motors, sensors, etc. should go here.  Below are examples
 
-inline pros::Motor intakeFullPre(8);
-inline pros::Motor intakeHalfMid(9);
-inline pros::Motor intakeHalfTop(10);
+inline pros::Motor intakeFullPre(-3);
+inline pros::Motor intakeHalfMid(-2);
+inline pros::Motor intakeHalfTop(1);
 
 inline pros::adi::Pneumatics hood('A', false);
 inline pros::adi::Pneumatics matchload('B', false);
