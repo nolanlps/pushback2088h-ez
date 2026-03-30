@@ -8,11 +8,12 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {1, 2, 3},     // Left Chassis Ports (negative port will reverse it!)
-    {-4, -5, -6},  // Right Chassis Ports (negative port will reverse it!)
+    {2, -3, -4},
+    {-8, 9, 10},     // Left Chassis Ports (negative port will reverse it!)
+      // Right Chassis Ports (negative port will reverse it!)
 
-    7,      // IMU Port
-    3,25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
+    19,      // IMU Port
+    3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);   // Wheel RPM = cartridge * (motor gear / wheel gear)
 
 // Uncomment the trackers you're using here!
@@ -20,8 +21,8 @@ ez::Drive chassis(
 //  - you should get positive values on the encoders going FORWARD and RIGHT
 // - `2.75` is the wheel diameter
 // - `4.0` is the distance from the center of the wheel to the center of the robot
-ez::tracking_wheel horiz_tracker(8, 2, 4.0);  // This tracking wheel is perpendicular to the drive wheels
-ez::tracking_wheel vert_tracker(9, 2, 4.0);   // This tracking wheel is parallel to the drive wheels
+// ez::tracking_wheel horiz_tracker(8, 2, 4.0);  // This tracking wheel is perpendicular to the drive wheels
+// ez::tracking_wheel vert_tracker(9, 2, 4.0);   // This tracking wheel is parallel to the drive wheels
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -253,10 +254,10 @@ void opcontrol() {
     // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
 
-    // . . .
-    // Put more user control code here!
-    // . . .
-
+    // int dir = master.get_analog(ANALOG_LEFT_Y);    // Gets amount forward/backward from left joystick
+		// int turn = master.get_analog(ANALOG_RIGHT_X);  // Gets the turn left/right from right joystick
+		// left_mg.move(dir - turn);                      // Sets left motor voltage
+		// right_mg.move(dir + turn);                     // Sets right motor voltage	
 
 
     if(master.get_digital_new_press(DIGITAL_R2)){
@@ -269,6 +270,7 @@ void opcontrol() {
 
 
     if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
+
             intakeall(12000);
       } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
             intakemid(12000);
