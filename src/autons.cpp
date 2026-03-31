@@ -77,37 +77,50 @@ void drive_example() {
   // chassis.pid_drive_set(-12_in, DRIVE_SPEED, true);
   // chassis.pid_wait();
     pros::delay(20);
+    chassis.odom_xyt_set(0_in, 0_in, 0_deg);
+    chassis.drive_angle_set(0_deg);
+    pros::delay(20);
 
     intakeall(12000);
     hood.toggle();
 
-  chassis.pid_drive_set(33_in, 80, true);
+  chassis.pid_drive_set(33.5_in, 70, true);
   chassis.pid_wait();
 
   chassis.pid_turn_set(90_deg, 70);
   chassis.pid_wait();
 
   matchload.toggle();
-  chassis.pid_drive_set(12_in, 70, true);
+  chassis.pid_drive_set(12_in, 45, true);
 
-  pros::delay(500);
+  pros::delay(1000);
 
   chassis.pid_drive_set(-40_in, 70);
   chassis.pid_wait();
-  hood.toggle();
-
-  pros::delay(500);
 
   hood.toggle();
 
-    chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+  pros::delay(1000);
 
-  chassis.pid_drive_set(2_in, 70);
+  matchload.toggle();
+  hood.toggle();
 
-chassis.pid_swing_set(ez::LEFT_SWING, 90, 90);
+
+  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+
+
+  chassis.pid_odom_set({{-19_in, 12_in}, fwd, 75}, true);
+  chassis.pid_wait();
+  matchload.toggle();
+    
+  chassis.pid_odom_set({{{-8_in, 24.5_in, 90_deg}, rev, 70}}, true);
   chassis.pid_wait();
 
-chassis.pid_turn_set(180_deg, 90);
+  chassis.pid_turn_set(90_deg, 70);
+  chassis.pid_drive_set(-26_in, 70, true);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(75_deg, 70);
 
 
 }
