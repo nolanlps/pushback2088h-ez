@@ -3,8 +3,15 @@
 void default_constants();
 
 void right();
+
 void right4ballrush();
 void right7ballrush();
+void right4long3mid();
+
+void left4ballrush();
+void left7ballrush();
+void left4long3mid();
+
 void drive_example();
 void turn_example();
 void drive_and_turn();

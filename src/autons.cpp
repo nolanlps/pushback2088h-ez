@@ -155,6 +155,57 @@ void right7ballrush() {
 
 }
 
+void right4long3mid() {
+
+}
+
+void left4ballrush() {
+
+}
+
+void left7ballrush() {
+
+}
+
+void left4long3mid() {
+  
+}
+
+void counterSawp() {
+  pros::delay(20);
+  // chassis.drive_angle_set(180_deg);
+  // pros::delay(20);
+
+  chassis.pid_odom_set({{{-30, 0}, rev, 0}});
+  hood.retract();
+  intakeall(127);
+  matchloader.toggle();
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(-90);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(5, 80);
+  chassis.pid_wait();
+
+  chassis.pid_odom_set({{{-30, 27}, rev, -90}});
+  chassis.pid_wait();
+  hood.extend();
+  pros::delay(600);
+  hood.retract();
+
+  chassis.pid_swing_set(R_SWING, 45, 90, 30);
+  chassis.pid_wait();
+  
+  chassis.pid_turn_set(-10, 80);
+  chassis.pid_wait();
+
+  chassis.pid_odom_set({{{-8, 30}, fwd, -15}});
+  chassis.pid_wait();
+
+  
+
+}
 ///
 // Turn Example
 ///
