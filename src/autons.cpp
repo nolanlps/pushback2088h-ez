@@ -76,7 +76,8 @@ void drive_example() {
 
   // chassis.pid_drive_set(-12_in, 50);
   // chassis.pid_wait();
-
+}
+void right4ballrush() {
   // ## RIGHT 3 Block score 3 grab 3 wing ##
 
   //   pros::delay(20);
@@ -125,7 +126,9 @@ void drive_example() {
   // chassis.pid_wait();
 
 // chassis.pid_turn_set(120_deg, 90);
+}
 
+void right7ballrush() {
 // ## RIGHT 7 block potentially ##
 
     pros::delay(20);

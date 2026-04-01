@@ -59,6 +59,9 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+
+      {"right7\n\npile, matchload and wing", right7ballrush},
+      {"right4\n\nmatchload and wing", right4ballrush},
       {"Drive\n\nDrive forward and come back", drive_example},
       {"Turn\n\nTurn 3 times.", turn_example},
       {"Drive and Turn\n\nDrive forward, turn, come back", drive_and_turn},
