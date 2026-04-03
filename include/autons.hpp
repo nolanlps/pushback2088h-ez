@@ -4,6 +4,8 @@ void default_constants();
 
 void right();
 
+void counterSawp();
+
 void right4ballrush();
 void right7ballrush();
 void right4long3mid();

@@ -13,7 +13,7 @@ ez::Drive chassis(
       // Right Chassis Ports (negative port will reverse it!)
 
     19,      // IMU Port
-    3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
+    3.4875,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);   // Wheel RPM = cartridge * (motor gear / wheel gear)
 
 // Uncomment the trackers you're using here!
@@ -21,7 +21,7 @@ ez::Drive chassis(
 //  - you should get positive values on the encoders going FORWARD and RIGHT
 // - `2.75` is the wheel diameter
 // - `4.0` is the distance from the center of the wheel to the center of the robot
-// ez::tracking_wheel horiz_tracker(8, 2, 4.0);  // This tracking wheel is perpendicular to the drive wheels
+// ez::tracking_wheel horiz_tracker(-18, 1.8, 7.12);  // This tracking wheel is perpendicular to the drive wheels WAS 2 BTW
 // ez::tracking_wheel vert_tracker(9, 2, 4.0);   // This tracking wheel is parallel to the drive wheels
 
 /**
@@ -60,12 +60,12 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
       {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
-      {"left4+3\n\nmatchload, pile and wing", left4long3mid},
-      {"left7\n\npile, matchload and wing", left7ballrush},
-      {"left4\n\nmatchload and wing", left4ballrush},
       {"right4+3\n\nmatchload, pile and wing", right4long3mid},
       {"right7\n\npile, matchload and wing", right7ballrush},
       {"right4\n\nmatchload and wing", right4ballrush},
+      {"left4+3\n\nmatchload, pile and wing", left4long3mid},
+      {"left7\n\npile, matchload and wing", left7ballrush},
+      {"left4\n\nmatchload and wing", left4ballrush},
       {"Drive\n\nDrive forward and come back", drive_example},
       {"Turn\n\nTurn 3 times.", turn_example},
       {"Drive and Turn\n\nDrive forward, turn, come back", drive_and_turn},
@@ -181,7 +181,11 @@ void ez_screen_task() {
           screen_print_tracker(chassis.odom_tracker_right, "r", 5);
           screen_print_tracker(chassis.odom_tracker_back, "b", 6);
           screen_print_tracker(chassis.odom_tracker_front, "f", 7);
-        }
+        } else if (ez::as::page_blank_is_on(1)) {
+  ez::screen_print("Left: " + util::to_string_with_precision(chassis.drive_sensor_left()) +
+                   "\nRight: " + util::to_string_with_precision(chassis.drive_sensor_right()), 1);
+}
+
       }
     }
 
@@ -296,6 +300,10 @@ void opcontrol() {
         matchload.toggle();
     }
 
+    // delete later
+    if (master.get_digital(DIGITAL_UP)) {
+  chassis.drive_sensor_reset();
+}
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
