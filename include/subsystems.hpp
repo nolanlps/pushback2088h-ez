@@ -9,7 +9,7 @@ extern Drive chassis;
 
 inline pros::Motor intakeFullPre(6);
 inline pros::Motor intakeHalfMid(7);
-inline pros::Motor intakeHalfTop(-5);
+inline pros::Motor intakeHalfTop(5);
 
 inline pros::adi::Pneumatics hood('F', false);
 inline pros::adi::Pneumatics matchload('H', false);
