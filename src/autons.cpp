@@ -154,8 +154,9 @@ void right7ballrush() {
     pros::delay(750);
     intakeall(0);
     chassis.pid_swing_set(LEFT_SWING, 270, 100, 0);
-    chassis.pid_wait();
-
+    chassis.pid_wait_quick_chain();
+    chassis.pid_drive_set(4, 80);
+    chassis.pid_wait_quick_chain();
     chassis.pid_turn_set(180, 80);
     chassis.pid_wait();
     chassis.pid_drive_set(-10, 80);
@@ -274,18 +275,28 @@ void left7ballrush() {
     chassis.pid_odom_set({{{-7_in, 25_in}, fwd, 90}}, true);
     chassis.pid_wait();
     matchload.toggle();
-    pros::delay(1000);
+
 
     chassis.pid_odom_set({{{-32_in, 0_in}, rev, 90}}, true);
     chassis.pid_wait();
 
     chassis.pid_odom_set({{{-32_in, -16_in}, fwd, 80}});
     chassis.pid_wait();
-    pros::delay(1000);
+    pros::delay(300);
 
     chassis.pid_odom_set({{{-32_in, 22_in}, rev, 90}});
     chassis.pid_wait();
     hood.toggle();
+        intakeall(12000);
+    pros::delay(750);
+    intakeall(0);
+    chassis.pid_swing_set(LEFT_SWING, 270, 100, 0);
+    chassis.pid_wait_quick_chain();
+    chassis.pid_drive_set(4, 80);
+    chassis.pid_wait_quick_chain();
+    chassis.pid_turn_set(180, 80);
+    chassis.pid_wait();
+    chassis.pid_drive_set(-10, 80);
 
 }
 
