@@ -59,12 +59,15 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
+          {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
+          {"right7\n\npile, matchload and wing", right7ballrush},
+          {"left7\n\npile, matchload and wing", left7ballrush},
+
       {"right4+3\n\nmatchload, pile and wing", right4long3mid},
-      {"right7\n\npile, matchload and wing", right7ballrush},
+
       {"right4\n\nmatchload and wing", right4ballrush},
       {"left4+3\n\nmatchload, pile and wing", left4long3mid},
-      {"left7\n\npile, matchload and wing", left7ballrush},
+
       {"left4\n\nmatchload and wing", left4ballrush},
       {"Drive\n\nDrive forward and come back", drive_example},
       {"Turn\n\nTurn 3 times.", turn_example},
@@ -221,11 +224,11 @@ void ez_template_extras() {
       chassis.pid_tuner_toggle();
 
     // Trigger the selected autonomous routine
-    if (master.get_digital(DIGITAL_B) && master.get_digital(DIGITAL_DOWN)) {
-      pros::motor_brake_mode_e_t preference = chassis.drive_brake_get();
-      autonomous();
-      chassis.drive_brake_set(preference);
-    }
+    // if (master.get_digital(DIGITAL_B) && master.get_digital(DIGITAL_DOWN)) {
+    //   pros::motor_brake_mode_e_t preference = chassis.drive_brake_get();
+    //   autonomous();
+    //   chassis.drive_brake_set(preference);
+    // }
 
     // Allow PID Tuner to iterate
     chassis.pid_tuner_iterate();
@@ -270,28 +273,49 @@ void opcontrol() {
 		// left_mg.move(dir - turn);                      // Sets left motor voltage
 		// right_mg.move(dir + turn);                     // Sets right motor voltage	
 
+static bool hoodToggle = false; // static bool means it like sticks and does not reset cause of while true
 
-    if(master.get_digital_new_press(DIGITAL_R2)){
-            hood.toggle();
-    }
+if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+  hoodToggle = !hoodToggle;
+  hood.toggle();
+
+}
 
     if(master.get_digital(DIGITAL_R2) && (master.get_digital(DIGITAL_L1)) && (master.get_digital(DIGITAL_RIGHT))){
             midDescore.extend();
     }
 
-
+if(hoodToggle) {
     if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
+    intakeFullPre.move_voltage(-12000);
+    intakeHalfMid.move_voltage(12000);
+    intakeHalfTop.move_voltage(0);
+    intakeHalfTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
-            intakeall(12000);
-      } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-            intakemid(12000);
-      } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-            intakeall(-12000);
-      } else {
-            intakeall(0);
-    }  
+    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+        intakemid(12000);
 
+    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        intakeall(-12000);
 
+    } else {
+        intakeall(0);
+    }
+
+} else {
+    if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
+        intakeall(12000);
+
+    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+        intakemid(12000);
+
+    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        intakeall(-12000);
+
+    } else {
+        intakeall(0);
+    }
+}
     if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
         wing.toggle();
     }
