@@ -273,25 +273,21 @@ void opcontrol() {
 		// left_mg.move(dir - turn);                      // Sets left motor voltage
 		// right_mg.move(dir + turn);                     // Sets right motor voltage	
 
-static bool hoodToggle = false; // static bool means it like sticks and does not reset cause of while true
+ //static bool hoodLock = false; // static bool means it like sticks and does not reset cause of while true
 
 if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
-  hoodToggle = !hoodToggle;
-  hood.toggle();
-
+  hoodToggle();
+  //hoodLock = !hoodLock;
+  //hood.toggle();
 }
 
     if(master.get_digital(DIGITAL_R2) && (master.get_digital(DIGITAL_L1)) && (master.get_digital(DIGITAL_RIGHT))){
             midDescore.extend();
     }
 
-if(hoodToggle) {
+if(hoodLock) {
     if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
-    intakeFullPre.move_voltage(-12000);
-    intakeHalfMid.move_voltage(12000);
-    intakeHalfTop.move_voltage(0);
-    intakeHalfTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-
+        intakeone(12000);
     } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
         intakemid(12000);
 

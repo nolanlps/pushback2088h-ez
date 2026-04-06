@@ -1,5 +1,7 @@
 #include "main.h"
 
+bool hoodLock = false;
+
 void intakeone(int intakePower) {
     intakeFullPre.move_voltage(-intakePower);
     intakeHalfMid.move_voltage(intakePower);
@@ -21,3 +23,7 @@ void intakemid(int intakePower) {
         intakeHalfTop.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 }
 
+void hoodToggle() {
+    hoodLock = !hoodLock;
+    hood.toggle();
+}
