@@ -8,8 +8,9 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
+    {-8, 9, 10},
     {2, -3, -4},
-    {-8, 9, 10},     // Left Chassis Ports (negative port will reverse it!)
+         // Left Chassis Ports (negative port will reverse it!)
       // Right Chassis Ports (negative port will reverse it!)
 
     19,      // IMU Port
@@ -21,7 +22,7 @@ ez::Drive chassis(
 //  - you should get positive values on the encoders going FORWARD and RIGHT
 // - `2.75` is the wheel diameter
 // - `4.0` is the distance from the center of the wheel to the center of the robot
-// ez::tracking_wheel horiz_tracker(-18, 1.8, 7.12);  // This tracking wheel is perpendicular to the drive wheels WAS 2 BTW
+ez::tracking_wheel horiz_tracker(1, 1.2, 6);  // This tracking wheel is perpendicular to the drive wheels WAS 2 BTW
 // ez::tracking_wheel vert_tracker(9, 2, 4.0);   // This tracking wheel is parallel to the drive wheels
 
 /**
@@ -39,7 +40,7 @@ void initialize() {
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline
   //  - ignore this if you aren't using a horizontal tracker
-  // chassis.odom_tracker_back_set(&horiz_tracker);
+  chassis.odom_tracker_back_set(&horiz_tracker);
   // Look at your vertical tracking wheel and decide if it's to the left or right of the center of the robot
   //  - change `left` to `right` if the tracking wheel is to the right of the centerline
   //  - ignore this if you aren't using a vertical tracker
@@ -59,12 +60,15 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-          {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
-          {"right7\n\npile, matchload and wing", right7ballrush},
-          {"left7\n\npile, matchload and wing", left7ballrush},
-
       {"right4+3\n\nmatchload, pile and wing", right4long3mid},
 
+
+          {"left7\n\npile, matchload and wing", left7ballrush},
+      {"right7\n\npile, matchload and wing", right7ballrush},
+
+      {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
+
+      
       {"right4\n\nmatchload and wing", right4ballrush},
       {"left4+3\n\nmatchload, pile and wing", left4long3mid},
 
@@ -224,11 +228,11 @@ void ez_template_extras() {
       chassis.pid_tuner_toggle();
 
     // Trigger the selected autonomous routine
-    // if (master.get_digital(DIGITAL_B) && master.get_digital(DIGITAL_DOWN)) {
-    //   pros::motor_brake_mode_e_t preference = chassis.drive_brake_get();
-    //   autonomous();
-    //   chassis.drive_brake_set(preference);
-    // }
+    if (master.get_digital(DIGITAL_LEFT) && master.get_digital(DIGITAL_A)) {
+      pros::motor_brake_mode_e_t preference = chassis.drive_brake_get();
+      autonomous();
+      chassis.drive_brake_set(preference);
+    }
 
     // Allow PID Tuner to iterate
     chassis.pid_tuner_iterate();

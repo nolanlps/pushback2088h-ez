@@ -15,7 +15,7 @@ const int SWING_SPEED = 110;
 ///
 void default_constants() {
   // P, I, D, and Start I
-  chassis.pid_drive_constants_set(16.7, 0.01, 112.50, 1.0);         // Fwd/rev constants, used for odom and non odom motions
+  chassis.pid_drive_constants_set(18.6, 0.01, 100.0, 1.0);         // Fwd/rev constants, used for odom and non odom motions
   chassis.pid_heading_constants_set(11.0, 0.0, 20.0);        // Holds the robot straight while going forward without odom
   chassis.pid_turn_constants_set(3.5, 0.045, 23.50, 15.0);     // Turn in place constants
   chassis.pid_swing_constants_set(6.0, 0.0, 65.0);           // Swing constants
@@ -66,15 +66,15 @@ void drive_example() {
   // The third parameter is a boolean (true or false) for enabling/disabling a slew at the start of drive motions
   // for slew, only enable it when the drive distance is greater than the slew distance + a few inches
 
-  chassis.pid_drive_set(24_in, 50, true);
+  chassis.pid_drive_set(24_in, 70, true);
   chassis.pid_wait();
 
   pros::delay(1000);
 
-  chassis.pid_drive_set(-12_in, 50);
+  chassis.pid_drive_set(-12_in, 70);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-12_in, 50);
+  chassis.pid_drive_set(-12_in, 70);
   chassis.pid_wait();
 }
 void right4ballrush() {
@@ -153,64 +153,119 @@ void right7ballrush() {
     intakeall(12000);
     pros::delay(750);
     intakeall(0);
-    chassis.pid_swing_set(LEFT_SWING, 270, 100, 0);
-    chassis.pid_wait_quick_chain();
-    chassis.pid_drive_set(4, 80);
-    chassis.pid_wait_quick_chain();
-    chassis.pid_turn_set(180, 80);
-    chassis.pid_wait();
-    chassis.pid_drive_set(-10, 80);
+
+  chassis.pid_odom_set({{{26_in, 18_in}, fwd, 90}});
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(180_deg, 90);
+ chassis.pid_wait_quick_chain();
+
+  chassis.pid_odom_set({{{26.5_in, 22_in}, rev, 80}, {{30.5_in, 36_in}, rev, 90}}, true);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(120_deg, 40);
+
+ 
+
+    // chassis.pid_swing_set(LEFT_SWING, 270, 100, 0);
+    // chassis.pid_wait_quick_chain();
+    // chassis.pid_drive_set(4, 80);
+    // chassis.pid_wait_quick_chain();
+    // chassis.pid_turn_set(180, 80);
+    // chassis.pid_wait();
+    // chassis.pid_drive_set(-10, 80);
 
 }
 
 void right4long3mid() {
 
   pros::delay(20);
-  chassis.odom_xyt_set(0_in, 0_in, 0_deg);
-  chassis.drive_angle_set(0_deg);
-  pros::delay(20);
-
-  intakeall(12000);
-  hood.toggle();
-
-  chassis.pid_drive_set(34_in, 75, true);
-  chassis.pid_wait();
-
-  chassis.pid_turn_set(90_deg, 90);
-  chassis.pid_wait();
-
-  matchload.toggle();
-  chassis.pid_drive_set(12_in, 50, true);
-
-  pros::delay(1000);
-
-  chassis.pid_drive_set(-38_in, 75);
-  chassis.pid_wait();
+    chassis.odom_xyt_set(0_in, 0_in, 0_deg);
+    chassis.drive_angle_set(0_deg);
+    pros::delay(20);
 
   hood.toggle();
-  matchload.toggle();
-  hood.toggle();
+    intakeall(2000);
+    chassis.pid_odom_set({{{7_in, 25_in}, fwd, 90}}, true);
+    chassis.pid_wait();
 
-  intakeall(10000);
-  chassis.pid_odom_set({{-25_in, 11_in}, fwd, 80}, true);
+    intakeall(0);
+    chassis.pid_odom_set({{{-7.5_in, 41.5_in}, fwd, 90}}, true);//meowmoewoemowmewo
+    chassis.pid_wait(); 
+    intakeall(-12000); //wow lyla ur so kawaii
+    pros::delay(1000);
+
+    chassis.pid_odom_set({{{33.5_in, 0_in}, rev, 90}}, true);
+    chassis.pid_wait();
+
+    chassis.pid_odom_set({{{33.5_in, -16_in}, fwd, 80}});
+    chassis.pid_wait();
+    pros::delay(300);
+
+    chassis.pid_odom_set({{{32.5_in, 22_in}, rev, 90}});
+    chassis.pid_wait();
+    hood.toggle();
+    intakeall(12000);
+    pros::delay(750);
+    intakeall(0);
+
+  chassis.pid_odom_set({{{25_in, 18_in}, fwd, 90}});
   chassis.pid_wait();
+
+  chassis.pid_turn_set(180_deg, 90);
+ chassis.pid_wait_quick_chain();
+
+  chassis.pid_odom_set({{{26_in, 22_in}, rev, 80}, {{30.5_in, 34_in}, rev, 90}}, true);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(120_deg, 40);
+//lyla is the best and smartest person in the world and i love her so much and she is so cute and amazing and wow i wish i could be like her and be as good at coding as her because she is just so amazing and talented and wow i just love her so much
+  // pros::delay(20);
+  // chassis.odom_xyt_set(0_in, 0_in, 0_deg);
+  // chassis.drive_angle_set(0_deg);
+  // pros::delay(20);
+
+  // intakeall(12000);
+  // hood.toggle();
+
+  // chassis.pid_drive_set(34_in, 75, true);
+  // chassis.pid_wait();
+
+  // chassis.pid_turn_set(90_deg, 90);
+  // chassis.pid_wait();
+
+  // matchload.toggle();
+  // chassis.pid_drive_set(12_in, 50, true);
+
+  // pros::delay(1000);
+
+  // chassis.pid_drive_set(-38_in, 75);
+  // chassis.pid_wait();
+
+  // hood.toggle();
+  // matchload.toggle();
+  // hood.toggle();
+
+  // intakeall(10000);
+  // chassis.pid_odom_set({{-25_in, 11_in}, fwd, 80}, true);
+  // chassis.pid_wait();
   
-  chassis.pid_odom_set({{-36.5_in, 0.5_in}, fwd, 80}, true);
-  chassis.pid_wait();
-  intakeall(-12000);
-  pros::delay(2000);
-  intakeall(12000);
+  // chassis.pid_odom_set({{-36.5_in, 0.5_in}, fwd, 80}, true);
+  // chassis.pid_wait();
+  // intakeall(-12000);
+  // pros::delay(2000);
+  // intakeall(12000);
 
-  chassis.pid_odom_set({{{-8_in, 26_in}, rev, 90},
-                       {{-22_in, 26_in}, rev, 90}},
-                      true);
-  chassis.pid_wait();
+  // chassis.pid_odom_set({{{-8_in, 26_in}, rev, 90},
+  //                      {{-22_in, 26_in}, rev, 90}},
+  //                     true);
+  // chassis.pid_wait();
 
-  chassis.pid_turn_set(90_deg, 90);
-  chassis.pid_wait();
+  // chassis.pid_turn_set(90_deg, 90);
+  // chassis.pid_wait();
 
-  chassis.pid_odom_set({{{-38_in, 28_in}, rev, 90}}, true);
-  chassis.pid_wait();
+  // chassis.pid_odom_set({{{-38_in, 28_in}, rev, 90}}, true);
+  // chassis.pid_wait();
 
 }
 
@@ -296,7 +351,7 @@ void left7ballrush() {
     chassis.pid_wait_quick_chain();
     chassis.pid_turn_set(180, 80);
     chassis.pid_wait();
-    chassis.pid_drive_set(-10, 80);
+    chassis.pid_drive_set(-24, 80);
 
 }
 
@@ -370,7 +425,7 @@ void counterSawp() {
   chassis.pid_wait();
   pros::delay(100); // if we need time to intake from matchloader later
 
-  chassis.pid_drive_set(-36_in, 80, true);
+  chassis.pid_drive_set(-36_in, 90, true);
   chassis.pid_wait();
   // hood.toggle();
   // pros::delay(1000); // score into goal
@@ -378,24 +433,26 @@ void counterSawp() {
   // hood.toggle();
 
   chassis.pid_odom_set({{{18_in, -11_in}, fwd, 110},
-                       {{17_in, 35_in}, fwd, 110}, {{-2_in, 63_in}, fwd, 110}},
+                       {{17_in, 35_in}, fwd, 120}, {{-2_in, 63_in}, fwd, 110}},
                       true);
   chassis.pid_wait();
+  pros::delay(100);
 
-  chassis.pid_turn_set(-90_deg, 100);
+  chassis.pid_turn_set(-90_deg, 120);
   chassis.pid_wait();
 
   // chassis.pid_odom_set({{20_in, 63_in}, rev, 70}, true);
   chassis.pid_drive_set(-14_in, 110);
   chassis.pid_wait();
+  pros::delay(100);
   hood.toggle();
   matchload.toggle();
 
-  chassis.pid_odom_set({{-18_in, 63_in}, fwd, 110});
+  chassis.pid_odom_set({{-22_in, 63_in}, fwd, 110});
   chassis.pid_wait();
 
-    chassis.pid_odom_set({{{0_in, 64_in}, rev, 110},
-                       {{35_in, 22_in}, rev, 110}},
+    chassis.pid_odom_set({{{-6_in, 64_in}, rev, 120},
+                       {{32_in, 20_in}, rev, 110}},
                       true);
     chassis.pid_wait();
     intakemid(12000);
@@ -612,7 +669,7 @@ void odom_drive_example() {
   // You can replace pid_drive_set with pid_odom_set and your robot will
   // have better error correction.
 
-  chassis.pid_odom_set(24_in, DRIVE_SPEED, true);
+  chassis.pid_odom_set(24_in, DRIVE_SPEED);
   chassis.pid_wait();
 
   chassis.pid_odom_set(-12_in, DRIVE_SPEED);
