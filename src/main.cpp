@@ -5,11 +5,14 @@
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
+pros::MotorGroup left_mg({2, -3, 1});
+pros::MotorGroup right_mg({8, -9, -10});
+
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {-8, 9, 10},
-    {2, -3, -4},
+    {2, -3, 1},
+    {8, -9, -10},
          // Left Chassis Ports (negative port will reverse it!)
       // Right Chassis Ports (negative port will reverse it!)
 
@@ -22,7 +25,7 @@ ez::Drive chassis(
 //  - you should get positive values on the encoders going FORWARD and RIGHT
 // - `2.75` is the wheel diameter
 // - `4.0` is the distance from the center of the wheel to the center of the robot
-ez::tracking_wheel horiz_tracker(1, 0.9, 2.0);  // This tracking wheel is perpendicular to the drive wheels WAS 2 BTW
+// ez::tracking_wheel horiz_tracker(1, 0.9, 2.0);  // This tracking wheel is perpendicular to the drive wheels WAS 2 BTW
 // ez::tracking_wheel vert_tracker(9, 2, 4.0);   // This tracking wheel is parallel to the drive wheels
 
 /**
@@ -39,8 +42,8 @@ void initialize() {
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline
-  //  - ignore this if you aren't using a horizontal tracker
-  chassis.odom_tracker_back_set(&horiz_tracker);
+  // //  - ignore this if you aren't using a horizontal tracker
+  // chassis.odom_tracker_back_set(&horiz_tracker);
   // Look at your vertical tracking wheel and decide if it's to the left or right of the center of the robot
   //  - change `left` to `right` if the tracking wheel is to the right of the centerline
   //  - ignore this if you aren't using a vertical tracker
@@ -60,9 +63,9 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-    {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
-
-      {"right4+3\n\nmatchload, pile and wing", right4long3mid},
+     {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
+     {"right7\n\npile, matchload and wing", right7ballrush},
+     {"right4+3\n\nmatchload, pile and wing", right4long3mid},
 
 
           {"left7\n\npile, matchload and wing", left7ballrush},
@@ -261,6 +264,9 @@ void ez_template_extras() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+  double drivetrainTemp = (left_mg.get_temperature() + right_mg.get_temperature()) / 2.0;
+  master.print(1, 1, "Temp: %f", drivetrainTemp);
+
   // This is preference to what you like to drive on
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
