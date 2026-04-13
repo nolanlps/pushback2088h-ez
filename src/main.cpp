@@ -52,7 +52,7 @@ void initialize() {
   // Configure your chassis controls
   chassis.opcontrol_curve_buttons_toggle(true);   // Enables modifying the controller curve with buttons on the joysticks
   chassis.opcontrol_drive_activebrake_set(0.0);   // Sets the active brake kP. We recommend ~2.  0 will disable.
-  chassis.opcontrol_curve_default_set(0.0, 0.0);  // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
+  chassis.opcontrol_curve_default_set(0.0, 0.1);  // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)
 
   // Set the drive to your own constants from autons.cpp!
   default_constants();
@@ -63,12 +63,15 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+             {"right7\n\npile, matchload and wing", right7ballrush},
+              {"left7\n\npile, matchload and wing", left7ballrush},
+
      {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
-     {"right7\n\npile, matchload and wing", right7ballrush},
+
      {"right4+3\n\nmatchload, pile and wing", right4long3mid},
 
 
-          {"left7\n\npile, matchload and wing", left7ballrush},
+
       {"right7\n\npile, matchload and wing", right7ballrush},
 
       
