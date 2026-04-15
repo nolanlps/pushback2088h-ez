@@ -5,8 +5,8 @@
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
-pros::MotorGroup left_mg({2, -3, 1});
-pros::MotorGroup right_mg({8, -9, -10});
+pros::MotorGroup left_mg({12, -13, 11});
+pros::MotorGroup right_mg({19, -17, -16});
 
 // Chassis constructor
 ez::Drive chassis(
