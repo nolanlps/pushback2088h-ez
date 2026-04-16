@@ -28,8 +28,8 @@ void intakemid(int intakePower) {
 
 void intakebottom(int intakePower) {
     intakeFullPre.move_voltage(-intakePower);
-    intakeHalfMid.move_voltage(4000);
-    intakeHalfTop.move_voltage(-4000);
+    intakeHalfMid.move_voltage(0);
+    intakeHalfTop.move_voltage(0);
     intakeHalfTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
                 midDescore.set_value(false);
 }

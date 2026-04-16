@@ -63,9 +63,12 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+     {"right7\n\npile, matchload and wing", right7ballrush},
+    {"right4+3\n\nmatchload, pile and wing", right4long3mid},
+    {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
      {"left4+3\n\nmatchload, pile and wing", left4long3mid},
      {"right4+3\n\nmatchload, pile and wing", right4long3mid},
-    {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
+    
              {"right7\n\npile, matchload and wing", right7ballrush},
               {"left7\n\npile, matchload and wing", left7ballrush},
 
@@ -297,7 +300,7 @@ if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
             midDescore.extend();
     }
 
-if(hoodLock) {
+if(hoodLock == false) {
     if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
         intakeone(12000);
     } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {

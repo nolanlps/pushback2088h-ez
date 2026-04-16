@@ -136,36 +136,36 @@ void right7ballrush() {
     chassis.odom_xyt_set(0_in, 0_in, 0_deg);
     chassis.drive_angle_set(0_deg);
     pros::delay(20);
-  hood.toggle();
+
     intakeall(12000);
-    chassis.pid_odom_set({{{7_in, 25_in}, fwd, 90}}, true);
+    chassis.pid_odom_set({{{8_in, 28_in}, fwd, 90}}, true);
     chassis.pid_wait();
     matchload.toggle();
 
-    chassis.pid_odom_set({{{33_in, 0_in}, rev, 90}}, true);
+    chassis.pid_odom_set({{{32_in, 0_in}, rev, 90}}, true);
     chassis.pid_wait();
 
     chassis.pid_turn_set(180_deg, 90);
     chassis.pid_wait();
 
-    chassis.pid_odom_set({{{33_in, -16_in}, fwd, 80}});
+    chassis.pid_odom_set({{{32_in, -16_in}, fwd, 80}});
     chassis.pid_wait();
-    pros::delay(300);
+    pros::delay(170);
 
-    chassis.pid_odom_set({{{33_in, 22_in}, rev, 90}});
+    chassis.pid_odom_set({{{33.5_in, 22_in}, rev, 90}});
     chassis.pid_wait();
-    hood.toggle();
+    hoodToggle();
     intakeall(12000);
-    pros::delay(1250);
+    pros::delay(1650);
     intakeall(0);
 
-  chassis.pid_odom_set({{{26_in, 18_in}, fwd, 90}});
+  chassis.pid_odom_set({{{23.5_in, 13_in}, fwd, 90}});
   chassis.pid_wait();
 
   chassis.pid_turn_set(180_deg, 90);
  chassis.pid_wait_quick_chain();
 
-  chassis.pid_odom_set({{{26.5_in, 22_in}, rev, 80}, {{30.5_in, 32_in}, rev, 90}}, true);
+  chassis.pid_odom_set({{{23.5_in, 22_in}, rev, 80}, {{26_in, 32_in}, rev, 90}}, true);
   chassis.pid_wait();
 
   // chassis.pid_turn_set(120_deg, 40);
@@ -189,7 +189,6 @@ void right4long3mid() {
     chassis.drive_angle_set(0_deg);
     pros::delay(20);
 
-  hoodToggle();
     intakebottom(12000);
     chassis.pid_odom_set({{{7_in, 25_in}, fwd, 100}}, true);
     chassis.pid_wait();
@@ -197,28 +196,29 @@ void right4long3mid() {
     chassis.pid_odom_set({{{-7.5_in, 43.5_in, 315_deg}, fwd, 100}}, true);//meowmoewoemowmewo
     chassis.pid_wait(); 
 
-    intakeall(-12000); //wow lyla ur so kawaii
+    intakeall(-10000); //wow lyla ur so kawaii
     pros::delay(1200);
 
-    chassis.pid_odom_set({{{30_in, 4_in}, rev, 100}}, true);
+    chassis.pid_odom_set({{{31.5_in, 4_in}, rev, 70}}, true);
     chassis.pid_wait();
     matchload.toggle();
     intakeall(12000);
 
-    chassis.pid_turn_set(180_deg, 100);
+    chassis.pid_turn_set(180_deg, 90);
     chassis.pid_wait();
 
-    chassis.pid_drive_set(16_in, 100);
+    chassis.pid_drive_set(16_in, 80);
     // chassis.pid_odom_set({{{32_in, -16_in}, fwd, 80}});
-    chassis.pid_wait_until(13_in);
-    pros::delay(150);
+    chassis.pid_wait_until(13.5_in);
+    pros::delay(250);
 
     chassis.pid_odom_set({{{32.5_in, 38_in, 180_deg}, rev, 100}});
-    pros::delay(500);
+    pros::delay(650);
     hoodToggle();
     intakeall(12000);
-    pros::delay(1200);
-    intakeall(0);
+    pros::delay(1500);
+    hoodToggle();
+    intakeone(12000);
 
   chassis.pid_odom_set({{{22_in, 18_in}, fwd, 100}});
   chassis.pid_wait();
@@ -226,10 +226,12 @@ void right4long3mid() {
   chassis.pid_turn_set(180_deg, 90);
  chassis.pid_wait();
 
-  chassis.pid_odom_set({{{21_in, 22_in}, rev, 100}, {{25_in, 34_in}, rev, 90}}, true);
-  chassis.pid_wait();
+  chassis.pid_odom_set({{{21_in, 22_in}, rev, 100}, {{25_in, 39_in}, rev, 90}}, true);
 
-  chassis.pid_turn_set(120_deg, 40);
+  chassis.pid_wait();
+    chassis.pid_turn_set(120_deg, 40);
+
+
 //lyla is the best and smartest person in the world and i love her so much and she is so cute and amazing and wow i wish i could be like her and be as good at coding as her because she is just so amazing and talented and wow i just love her so much
   // pros::delay(20);
   // chassis.odom_xyt_set(0_in, 0_in, 0_deg);
@@ -388,7 +390,7 @@ void left4long3mid() {
     chassis.drive_angle_set(0_deg);
     pros::delay(20);
 
-  hoodToggle();
+  // hoodToggle();
     intakeall(12000);
     chassis.pid_odom_set({{{-7_in, 25_in}, fwd, 90}}, true);
     chassis.pid_wait_until(20_in);
@@ -397,34 +399,35 @@ void left4long3mid() {
 
     chassis.pid_odom_set({{{6_in, 40_in}, rev, 90}}, true);//meowmoewoemowmewo
     chassis.pid_wait(); 
-    intakemid(10000); //wow lyla ur so kawaii
+    intakemid(12000); //wow lyla ur so kawaii
     pros::delay(2000);
     intakeall(12000);
 
-    chassis.pid_odom_set({{{-31.5_in, 0_in}, fwd, 90}}, true);
+    chassis.pid_odom_set({{{-34_in, 0_in}, fwd, 90}}, true);
     chassis.pid_wait();
 
     chassis.pid_turn_set(180_deg, 90);
     chassis.pid_wait();
 
-    chassis.pid_odom_set({{{-31.5_in, -16_in}, fwd, 80}});
-    chassis.pid_wait_until(10.5_in);
-    pros::delay(100);
+    chassis.pid_odom_set({{{-34_in, -16_in}, fwd, 90}});
+    chassis.pid_wait_until(12_in);
+    pros::delay(200);
 
-    chassis.pid_odom_set({{{-35_in, 22_in}, rev, 60}});
+    chassis.pid_odom_set({{{-36_in, 22_in}, rev, 80}});
     chassis.pid_wait();
-    hood.toggle();
+    hoodToggle();
     intakeall(12000);
-    pros::delay(750);
+    pros::delay(1200);
     intakeall(0);
+    matchload.toggle();
 
-  chassis.pid_odom_set({{{-47_in, 18_in}, fwd, 90}});
+  chassis.pid_odom_set({{{-46.5_in, 12_in}, fwd, 90}});
   chassis.pid_wait();
 
   chassis.pid_turn_set(180_deg, 90);
  chassis.pid_wait();
 
-  chassis.pid_odom_set({{{-46_in, 22_in}, rev, 80}, {{-46_in, 34_in}, rev, 90}}, true);
+  chassis.pid_odom_set({{{-46.5_in, 22_in}, rev, 80}, {{-43_in, 34_in}, rev, 90}}, true);
   chassis.pid_wait();
 
   chassis.pid_turn_set(120_deg, 40);
@@ -484,47 +487,47 @@ void counterSawp() {
   chassis.drive_angle_set(0_deg);
   pros::delay(20);
 
-  hoodToggle();
+  // hoodToggle();
   matchload.toggle();
   intakeall(12000);
   pros::delay(10);
 
- chassis.pid_odom_set({{0_in, -32_in}, rev, 120});
+ chassis.pid_odom_set({{0_in, -34_in}, rev, 100});
   chassis.pid_wait();
 
   chassis.pid_turn_set(-90_deg, 120);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(12_in, 120);
-  chassis.pid_wait_until(11.5_in);
+  chassis.pid_drive_set(13_in, 120);
+  chassis.pid_wait_until(12.5_in);
   // chassis.pid_drive_set(2_in, 80);
   // chassis.pid_wait_quick_chain();
-  pros::delay(50); // if we need time to intake from matchloader later
+  pros::delay(70); // if we need time to intake from matchloader later
 
-  chassis.pid_odom_set({{20_in, -36_in}, rev, 100});
-  pros::delay(550);
+  chassis.pid_odom_set({{22_in, -35.5_in}, rev, 80});
+  pros::delay(650);
   hoodToggle();
   intakeall(12000);
-  pros::delay(1000); // score into goal
+  pros::delay(1250); // score into goal
   hoodToggle();
   matchload.toggle();
 
   // chassis.pid_swing_set(ez::LEFT_SWING, 100_deg, 120, 0);
   // chassis.pid_wait_quick_chain();
 
-  chassis.pid_odom_set({{{25_in, -10_in}, fwd, 90}, {{25_in, 35_in}, fwd, 120}, {{-4_in, 59_in}, fwd, 110}}, 
+  chassis.pid_odom_set({{{20_in, -10_in}, fwd, 90}, {{20_in, 32_in}, fwd, 110}, {{-6_in, 65_in}, fwd, 110}}, 
                       true);
   chassis.pid_wait();
   matchload.toggle();
 
-  chassis.pid_turn_set(-90_deg, 120);
+  chassis.pid_turn_set(-90_deg, 110);
   chassis.pid_wait();
 
-  chassis.pid_odom_set({{{30_in, 59_in}, rev, 110}}, true);
-  pros::delay(550);
+  chassis.pid_odom_set({{{32_in, 64_in}, rev, 110}}, true);
+  pros::delay(450);
   hoodToggle();
   intakeall(12000);
-  pros::delay(600);
+  pros::delay(1400);
   hoodToggle();
 
   pros::delay(100);
@@ -538,11 +541,15 @@ void counterSawp() {
   intakeall(12000);
   chassis.pid_drive_set(-6_in, 120, false);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-37.5_in, -20_in}, rev, 120});
+  chassis.pid_odom_set({{-38_in, -21_in}, rev, 100});
   chassis.pid_wait();
   chassis.pid_turn_set(45_deg, 120);
+  // chassis.pid_drive_set(-2_in, 100, false);
+  matchload.toggle();
   chassis.pid_wait_quick_chain();
   hoodToggle();
+  // intakeall(-12000);
+  // pros::delay(200);
   intakemid(12000);
 
 
@@ -563,6 +570,7 @@ void counterSawp() {
   hoodToggle();
 
   chassis.pid_odom_set({{{0_in, 61_in}, fwd, 120}, {{30_in, 20_in}, rev, 120}}, true);
+  
 
   // +++ 
 
