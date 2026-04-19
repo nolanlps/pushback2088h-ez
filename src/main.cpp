@@ -63,9 +63,28 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-     {"right7\n\npile, matchload and wing", right7ballrush},
-    {"right4+3\n\nmatchload, pile and wing", right4long3mid},
+    
+
+
+    {"left4+3\n\nmatchload, pile and wing", left4long3mid},
+    {"left7\n\npile, matchload and wing", left7ballrush},
+    {"skills\n\nskill issue", skills},
     {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
+     {"skills\n\nskill issue", skills},
+        
+{"right7\n\npile, matchload and wing", right7ballrush},
+
+    {"skills\n\nskill issue", skills},
+    
+
+      {"driveforwards\n\nDrive forward", driveforwards},
+    
+    {"left4+3\n\nmatchload, pile and wing", left4long3mid},
+     {"right4+3\n\nmatchload, pile and wing", right4long3mid},
+  
+    {"right7\n\npile, matchload and wing", right7ballrush},
+    {"right4+3\n\nmatchload, pile and wing", right4long3mid},
+     
      {"left4+3\n\nmatchload, pile and wing", left4long3mid},
      {"right4+3\n\nmatchload, pile and wing", right4long3mid},
     
@@ -288,7 +307,8 @@ void opcontrol() {
 		// left_mg.move(dir - turn);                      // Sets left motor voltage
 		// right_mg.move(dir + turn);                     // Sets right motor voltage	
 
- //static bool hoodLock = false; // static bool means it like sticks and does not reset cause of while true
+ //static bool hoodLockwhile (true) {
+
 
 if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
   hoodToggle();
@@ -296,9 +316,9 @@ if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
   //hood.toggle();
 }
 
-    if(master.get_digital(DIGITAL_R2) && (master.get_digital(DIGITAL_L1)) && (master.get_digital(DIGITAL_RIGHT))){
-            midDescore.extend();
-    }
+    // if(master.get_digital(DIGITAL_R2) && (master.get_digital(DIGITAL_L1)) && (master.get_digital(DIGITAL_RIGHT))){
+    //         midDescore.extend();
+    // }
 
 if(hoodLock == false) {
     if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)){
@@ -327,7 +347,10 @@ if(hoodLock == false) {
         intakeall(0);
     }
 }
+
     if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        // chickenstars = !chickenstars;
+        // wing.set_value(chickenstars);
         wing.toggle();
     }
     

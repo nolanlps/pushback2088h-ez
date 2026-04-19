@@ -5,5 +5,7 @@ void intakemid(int intakePower);
 void intakeone(int intakePower);
 void intakebottom(int intakePower);
 void hoodToggle();
-
+// void wingToggle();
+static bool chickenstars;
 extern bool hoodLock;
+// extern bool wingLock;
