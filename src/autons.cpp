@@ -515,6 +515,85 @@ void counterSawp() {
   matchload.toggle();
   intakeone(12000);
 
+
+ chassis.pid_odom_set({{0_in, -36_in}, rev, 100});
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(-90_deg, 120);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(13_in, 120);
+  // chassis.pid_wait_until(11.5_in);
+  // chassis.pid_drive_set(2_in, 80);
+  chassis.pid_wait();
+  pros::delay(20); // if we need time to intake from matchloader later
+
+  chassis.pid_odom_set({{22_in, -37.5_in}, rev, 100});
+  pros::delay(650);
+  hoodToggle();
+  intakeall(12000);
+  pros::delay(900); // score into goal
+  hoodToggle();
+  intakeone(12000);
+  matchload.toggle();
+
+  // chassis.pid_swing_set(ez::LEFT_SWING, 100_deg, 120, 0);
+  // chassis.pid_wait_quick_chain();
+
+  chassis.pid_odom_set({{{20_in, -10_in}, fwd, 110}, {{20_in, 32_in}, fwd, 110}, {{-12_in, 63_in}, fwd, 90}}, 
+                      true);
+  chassis.pid_wait();
+  matchload.toggle();
+
+  chassis.pid_turn_set(-90_deg, 110);
+  chassis.pid_wait();
+
+  chassis.pid_odom_set({{{32_in, 62.5_in}, rev, 110}}, true);
+  pros::delay(400);
+  hoodToggle();
+  intakeall(12000);
+  pros::delay(1600);
+  hoodToggle();
+  intakeone(12000);
+
+  pros::delay(100);
+  chassis.odom_xyt_set(0_in, 0_in, 0_deg);
+  chassis.drive_angle_set(0_deg);
+  pros::delay(20);
+
+  chassis.pid_turn_set(-2_deg, 120);
+  chassis.pid_wait_quick_chain();
+
+  // chassis.pid_odom_set({{0_in, 34_in}, fwd, 120});
+  chassis.pid_drive_set(34.7_in, 110, false);
+  chassis.pid_wait();
+  intakeone(12000);
+  chassis.pid_drive_set(-6_in, 120, false);
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-41_in, -22_in}, rev, 100});
+  chassis.pid_wait();
+  chassis.pid_turn_set(45_deg, 120);
+  // chassis.pid_drive_set(-2_in, 100, false);
+  matchload.toggle();
+  chassis.pid_wait_quick_chain(); 
+  hoodToggle();
+  intakeall(12000);
+  pros::delay(10);
+  // intakeall(-12000);
+  // pros::delay(200);
+  intakemid(12000);
+
+  pros::delay(100000);
+
+  pros::delay(100);
+  chassis.odom_xyt_set(0_in, 0_in, 0_deg);
+  chassis.drive_angle_set(0_deg);
+  pros::delay(20);
+
+  // hoodToggle();
+  matchload.toggle();
+  intakeone(12000);
+
  chassis.pid_odom_set({{0_in, -34.2_in}, rev, 100});
   chassis.pid_wait();
 
@@ -527,16 +606,16 @@ void counterSawp() {
   // chassis.pid_wait_quick_chain();
   //   chassis.pid_drive_set(1.5_in, 80, false);
   chassis.pid_wait();
-  // pros::delay(30); // if we need time to intake from matchloader later
+  pros::delay(20); // if we need time to intake from matchloader later
 
-  chassis.pid_odom_set({{22_in, -37_in}, rev, 100});
+  chassis.pid_odom_set({{22_in, -36.5_in}, rev, 100});
   pros::delay(650);
   hoodToggle();
   intakeall(12000);
   pros::delay(900); // score into goal
-  hoodToggle();
+  matchload.toggle();  
   intakeone(12000);
-  matchload.toggle();
+  hoodToggle();
 
   // chassis.pid_swing_set(ez::LEFT_SWING, 100_deg, 120, 0);
   // chassis.pid_wait_quick_chain();
@@ -554,29 +633,31 @@ void counterSawp() {
   hoodToggle();
   intakeall(12000);
   pros::delay(1600);
-  hoodToggle();
-  intakeone(12000);
 
   pros::delay(100);
   chassis.odom_xy_set(0_in, 0_in);
   pros::delay(20);
 
   // chassis.pid_odom_set({{0_in, 34_in}, fwd, 120});
-  chassis.pid_drive_set(34.3_in, 110, false);
-  // chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(33.5_in, 110, false);
+  chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(1_in, 80, false);
-  chassis.pid_wait();
+  pros::delay(100);
+  hoodToggle();
+  intakeone(12000);
 
   // pros::delay(20);
   intakeone(12000);
   chassis.pid_drive_set(-6_in, 120, false);
   chassis.pid_wait();
-  chassis.pid_odom_set({{21_in, -40_in}, rev, 100});
-  chassis.pid_wait();
-  chassis.pid_turn_set(-45_deg, 120);
+  chassis.pid_odom_set({{21_in, -43_in}, rev, 100});
+  chassis.pid_wait_quick_chain();
+      chassis.pid_turn_set(-45_deg, 120);
+    chassis.pid_wait();
+
   // chassis.pid_drive_set(-2_in, 100, false);
   matchload.toggle();
-  chassis.pid_wait_quick_chain(); 
+  chassis.pid_wait(); 
   // hoodToggle();
   intakeall(12000);
   pros::delay(10);
