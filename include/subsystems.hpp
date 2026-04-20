@@ -6,6 +6,9 @@
 extern Drive chassis;
 
 
+inline pros::MotorGroup left_mg({12, -13, 11});
+inline pros::MotorGroup right_mg({19, -17, -16});
+
 inline pros::Motor intakeFullPre(14);
 inline pros::Motor intakeHalfMid(15);
 inline pros::Motor intakeHalfTop(20);

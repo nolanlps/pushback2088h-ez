@@ -5,9 +5,6 @@
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
-pros::MotorGroup left_mg({12, -13, 11});
-pros::MotorGroup right_mg({19, -17, -16});
-
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
@@ -64,11 +61,12 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
     
-
-
+    {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
+        {"skills\n\nskill issue", skills},
+    
     {"left4+3\n\nmatchload, pile and wing", left4long3mid},
     {"left7\n\npile, matchload and wing", left7ballrush},
-    {"skills\n\nskill issue", skills},
+
     {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
      {"skills\n\nskill issue", skills},
         

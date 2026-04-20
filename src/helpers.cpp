@@ -32,7 +32,7 @@ void intakeall(int intakePower) {
 void intakemid(int intakePower) {
     intakeFullPre.move_voltage(-intakePower);
     intakeHalfMid.move_voltage(intakePower);
-    intakeHalfTop.move_voltage(intakePower - 2000);
+    intakeHalfTop.move_voltage(intakePower);
         intakeHalfTop.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 wing.set_value(true);
 // chickenstars = true;
@@ -52,5 +52,10 @@ void intakebottom(int intakePower) {
 void hoodToggle() {
     hoodLock = !hoodLock;
     hood.toggle();
+}
+
+void forwards(int voltage){
+    left_mg.move_voltage(voltage);
+    right_mg.move_voltage(voltage);
 }
 
