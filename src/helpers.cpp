@@ -16,9 +16,20 @@ void intakeone(int intakePower) {
 }
 
 void intakeall(int intakePower) {
+    // yo comment this out if no wokr
+    if(intakePower < 0) {
+    intakeFullPre.move_voltage(-intakePower);
+    intakeHalfMid.move_voltage(intakePower);
+    intakeHalfTop.move_voltage(0);
+    } else {
     intakeFullPre.move_voltage(-intakePower);
     intakeHalfMid.move_voltage(intakePower);
     intakeHalfTop.move_voltage(-intakePower);
+    }
+        // ey bruh if ts above no work uncomment this
+    // intakeFullPre.move_voltage(-intakePower); 
+    // intakeHalfMid.move_voltage(intakePower);
+    // intakeHalfTop.move_voltage(-intakePower);
     intakeHalfTop.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     midDescore.set_value(false);
         // wing.set_value(false);
@@ -44,7 +55,7 @@ midDescore.set_value(true);
 }
 
 void intakebottom(int intakePower) {
-    intakeFullPre.move_voltage(-intakePower); 
+    intakeFullPre.move_voltage(intakePower); 
     intakeHalfMid.move_voltage(-intakePower);
     intakeHalfTop.move_voltage(0); 
     intakeHalfTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);

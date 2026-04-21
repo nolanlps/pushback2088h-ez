@@ -325,7 +325,8 @@ if(hoodLock == false) {
         intakemid(12000);
 
     } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-        intakebottom(12000);
+      intakeall(-12000); //yo comment this out if no work n change helpers.cpp
+        // intakebottom(12000); // yo uncomment this if no work
 
     } else {
         intakeall(0);
@@ -339,7 +340,8 @@ if(hoodLock == false) {
         intakemid(12000);
 
     } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-        intakebottom(12000);
+      intakeall(-12000); //yo comment this out if no work and change helpers.cpp
+        // intakebottom(12000); // yo uncomment this if no work
 
     } else {
         intakeall(0);
