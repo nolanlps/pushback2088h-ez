@@ -524,11 +524,11 @@ void counterSawp() {
   chassis.pid_turn_set(-90_deg, 120);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(10_in, 100);
+  chassis.pid_drive_set(10.2_in, 100);
   chassis.pid_wait_quick_chain();
   pros::delay(400);
   // chassis.pid_wait_until(11_in);
-  // chassis.pid_drive_set(2_in, 80);
+  // chassis.pid_drive_set(2_in, 80);s
   // chassis.pid_wait();
   // pros::delay(120); // if we need time to intake from matchloader later
 
@@ -563,7 +563,7 @@ void counterSawp() {
   pros::delay(600);
   hoodToggle();
   intakeall(12000);
-   pros::delay(1200);
+   pros::delay(1300);
   chassis.odom_xyt_set(0_in, 0_in, 0_deg); // reset
   chassis.drive_angle_set(0_deg);
   pros::delay(20);
@@ -583,7 +583,7 @@ void counterSawp() {
       hoodToggle();
   chassis.pid_drive_set(4, 30);
   chassis.pid_wait_quick_chain();
-  pros::delay(400);
+  pros::delay(380);
   intakeone(12000);
   chassis.pid_drive_set(-6_in, 120, false);
   chassis.pid_wait();
@@ -630,7 +630,7 @@ void counterSawp() {
   pros::delay(650);
   hoodToggle();
   intakeall(12000);
-  pros::delay(900); // score into goal
+  pros::delay(1100); // score into goal
   matchload.toggle();  
   intakeone(12000);
   hoodToggle();
@@ -638,7 +638,7 @@ void counterSawp() {
   // chassis.pid_swing_set(ez::LEFT_SWING, 100_deg, 120, 0);
   // chassis.pid_wait_quick_chain();
 
-  chassis.pid_odom_set({{{18_in, -10_in}, fwd, 110}, {{19_in, 32_in}, fwd, 110}, {{-12_in, 62.5_in}, fwd, 90}}, 
+  chassis.pid_odom_set({{{18_in, -10_in}, fwd, 110}, {{19_in, 32_in}, fwd, 110}, {{-12_in, 63_in}, fwd, 90}}, 
                       true);
   chassis.pid_wait();
   matchload.toggle();
@@ -646,7 +646,7 @@ void counterSawp() {
   chassis.pid_turn_set(-90_deg, 110);
   chassis.pid_wait();
 
-  chassis.pid_odom_set({{{26_in, 62.5_in}, rev, 110}}, true);
+  chassis.pid_odom_set({{{26_in, 63_in}, rev, 110}}, true);
   pros::delay(400);
   hoodToggle();
   intakeall(12000);
