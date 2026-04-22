@@ -60,11 +60,11 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-    
+
     {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
         {"skills\n\nskill issue", skills},
     
-    {"left4+3\n\nmatchload, pile and wing", left4long3mid},
+        {"left4+3\n\nmatchload, pile and wing", left4long3mid},
     {"left7\n\npile, matchload and wing", left7ballrush},
 
     {"counterSawp\n\n13 ball ending at mid goal", counterSawp},

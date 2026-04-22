@@ -518,14 +518,15 @@ void counterSawp() {
   intakeone(12000);
 
     chassis.drive_brake_set(MOTOR_BRAKE_HOLD);
- chassis.pid_odom_set({{0_in, -34.7_in}, rev, 90}, true);
+ chassis.pid_odom_set({{0_in, -34_in}, rev, 90}, true);
   chassis.pid_wait();
 
   chassis.pid_turn_set(-90_deg, 120);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(12.7_in, 100);
+  chassis.pid_drive_set(10_in, 100);
   chassis.pid_wait_quick_chain();
+  pros::delay(300);
   // chassis.pid_wait_until(11_in);
   // chassis.pid_drive_set(2_in, 80);
   // chassis.pid_wait();
@@ -543,19 +544,20 @@ void counterSawp() {
   // chassis.pid_swing_set(ez::LEFT_SWING, 100_deg, 120, 0);
   // chassis.pid_wait_quick_chain();
 
-  chassis.pid_odom_set({{{19_in, -10_in}, fwd, 110}, {{20_in, 32_in}, fwd, 110}, {{-10_in, 64_in}, fwd, 90}}, 
-                      true);
+  chassis.pid_odom_set({{{19_in, -10_in}, fwd, 110}, {{20_in, 32_in}, fwd, 110}, {{-10_in, 63_in}, fwd, 90}}, 
+                      true); // yo llya dont run overheated the sawp is working better thatn yesterday rn nga
   chassis.pid_wait();
   matchload.toggle();
 
-  chassis.pid_turn_set(-90_deg, 110);
+  chassis.pid_turn_set(-92_deg, 110);
   chassis.pid_wait();
 
-  chassis.pid_odom_set({{{32_in, 63.5_in}, rev, 110}}, true);
-  pros::delay(400);
+  // chassis.pid_odom_set({{{32_in, 63.5_in}, rev, 80}}, true);
+  chassis.pid_drive_set(-15, 80);
+  pros::delay(600);
   hoodToggle();
   intakeall(12000);
-   pros::delay(700);
+   pros::delay(1000);
   chassis.odom_xyt_set(0_in, 0_in, 0_deg); // reset
   chassis.drive_angle_set(0_deg);
   pros::delay(20);
@@ -566,13 +568,19 @@ void counterSawp() {
   // chassis.pid_wait_quick_chain();
 
   // chassis.pid_odom_set({{0_in, 34_in}, fwd, 120});
-  chassis.pid_drive_set(34.7_in, 100, true);
+  // chassis.pid_drive_set(30, 80, true);
+  chassis.pid_odom_set({{-2, 31}, fwd, 80});
+
+  // chassis.pid_wait_quick_chain();
+  // chassis.pid_turn_set(-10, 100);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(5, 30);
   chassis.pid_wait();
   pros::delay(20);
   intakeone(12000);
   chassis.pid_drive_set(-6_in, 120, false);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-41.5_in, -17_in}, rev, 100});
+  chassis.pid_odom_set({{-42_in, -19.5_in}, rev, 100});
   chassis.pid_wait();
   // chassis.pid_drive_set(-2_in, 100, false);
   // matchload.toggle();
@@ -582,7 +590,7 @@ void counterSawp() {
   pros::delay(10);
   // intakeall(-12000);
   // pros::delay(200);
-  intakemid(12000);
+  intakemid(9000);
 
   pros::delay(100000); // ++++++++++++++++++++++++++++++++++++++++++++++++
 
