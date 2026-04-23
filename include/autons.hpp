@@ -7,10 +7,12 @@ void right();
 void counterSawp();
 void skills();
 
+void right4rushNolan();
 void right4ballrush();
 void right7ballrush();
 void right4long3mid();
 
+void left4rushNolan();
 void left4ballrush();
 void left7ballrush();
 void left4long3mid();
