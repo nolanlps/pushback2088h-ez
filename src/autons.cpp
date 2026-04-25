@@ -247,13 +247,13 @@ void right7ballrush() { //april 22
     intakeone(12000);
     hood.toggle();
 
-  chassis.pid_odom_set({{{20_in, 13_in}, fwd, 90}});
+  chassis.pid_odom_set({{{21_in, 13_in}, fwd, 90}});
   chassis.pid_wait();
 
   chassis.pid_turn_set(180_deg, 90);
  chassis.pid_wait_quick_chain();
 
-  chassis.pid_odom_set({{{20_in, 33_in}, rev, 70}});
+  chassis.pid_odom_set({{{22_in, 36_in}, rev, 70}});
   chassis.pid_wait();
 
 
