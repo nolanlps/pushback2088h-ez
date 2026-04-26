@@ -60,26 +60,22 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-              {"right4nolaln\n\nmatchload and wing", right4rushNolan},
-        {"right7\n\npile, matchload and wing", right7ballrush},
-            {"left7\n\npile, matchload and wing", left7ballrush},
+
+      {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
+  {"skills\n\nskill issue", skills},
+    {"skills\n\nskill issue", skills},
+   {"right4+3\n\nmatchload, pile and wing", right4long3mid},
     {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
-            {"left4+3\n\nmatchload, pile and wing", left4long3mid},
+    {"left7\n\npile, matchload and wing", left7ballrush},
+    {"left4+3\n\nmatchload, pile and wing", left4long3mid},
 
 
-        {"left4nolaln\n\nmatchload and wing", left4rushNolan},
+  {"right4nolaln\n\nmatchload and wing", right4rushNolan},
+      {"right7\n\npile, matchload and wing", right7ballrush},
 
+      {"left4nolaln\n\nmatchload and wing", left4rushNolan},
 
-         {"right4+3\n\nmatchload, pile and wing", right4long3mid},
-
-
-
-
-
-        {"skills\n\nskill issue", skills},
-    
-
-
+      {"skills\n\nskill issue", skills},
 
     {"counterSawp\n\n13 ball ending at mid goal", counterSawp},
      {"skills\n\nskill issue", skills},
@@ -104,10 +100,6 @@ void initialize() {
               {"left7\n\npile, matchload and wing", left7ballrush},
 
       {"right7\n\npile, matchload and wing", right7ballrush},
-
-      
-
-      
       {"right4\n\nmatchload and wing", right4ballrush},
       {"left4\n\nmatchload and wing", left4ballrush},
 
