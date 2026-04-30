@@ -234,17 +234,17 @@ void right7ballrush() { //april 22
 
     chassis.pid_odom_set({{{31_in, -12.7_in}, fwd, 60}});
     chassis.pid_wait();
-    pros::delay(100);
+    pros::delay(175);
 
-    chassis.pid_odom_set({{{30.5_in, 22_in}, rev, 90}});
+    chassis.pid_odom_set({{{31.2_in, 22_in}, rev, 90}});
     pros::delay(700);
     hoodToggle();
     intakeall(12000);
-    pros::delay(700);
+    pros::delay(200);
     intakeall(-12000);
     pros::delay(50);
     intakeall(12000);
-    pros::delay(500);
+    pros::delay(1550);
     intakeone(12000);
     hood.toggle();
 
@@ -603,13 +603,13 @@ void counterSawp() {
 
   // hoodToggle();
   matchload.toggle();
-  intakeone(12000);
 
     chassis.drive_brake_set(MOTOR_BRAKE_HOLD);
  chassis.pid_odom_set({{0_in, -35_in}, rev, 90}, true);
   chassis.pid_wait();
 
   chassis.pid_turn_set(-90_deg, 120);
+  intakeone(12000);
   chassis.pid_wait();
 
   chassis.pid_drive_set(10.7_in, 100);
@@ -636,7 +636,7 @@ void counterSawp() {
   // chassis.pid_swing_set(ez::LEFT_SWING, 100_deg, 120, 0);
   // chassis.pid_wait_quick_chain();
 
-  chassis.pid_odom_set({{{18.5_in, -10_in}, fwd, 110}, {{20_in, 32_in}, fwd, 110}, {{-10_in, 64_in}, fwd, 90}}, 
+  chassis.pid_odom_set({{{18.5_in, -10_in}, fwd, 110}, {{20_in, 32_in}, fwd, 110}, {{-14_in, 64_in}, fwd, 90}}, 
                       true); // yo llya dont run overheated the sawp is working better thatn yesterday rn 
 
     pros::delay(700);
@@ -652,10 +652,12 @@ void counterSawp() {
   chassis.pid_drive_set(-18, 80);
   pros::delay(600);
   hoodToggle();
-  intakeall(-12000);
-  pros::delay(50);
   intakeall(12000);
-  pros::delay(1300);
+  pros::delay(200);
+  intakeall(-12000);
+  pros::delay(100);
+  intakeall(12000);
+  pros::delay(1400);
   // intakeall(-12000);
   // pros::delay(100);
   // intakeall(12000);
@@ -671,13 +673,13 @@ void counterSawp() {
 
   // chassis.pid_odom_set({{0_in, 34_in}, fwd, 120});
   // chassis.pid_drive_set(30, 80, true);
-  chassis.pid_odom_set({{0.1, 27}, fwd, 80});
+  chassis.pid_odom_set({{0, 27}, fwd, 80});
 
   // chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(-10, 100);
   chassis.pid_wait_quick_chain();
       hoodToggle();
-  chassis.pid_drive_set(6, 100);
+  chassis.pid_drive_set(6.76, 100);
   chassis.pid_wait_quick_chain();
   pros::delay(300);
   intakeone(12000);

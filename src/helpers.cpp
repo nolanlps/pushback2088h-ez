@@ -9,6 +9,7 @@ void intakeone(int intakePower) {
     intakeHalfMid.move_voltage(intakePower);
     intakeHalfTop.move_voltage(0);
     intakeHalfTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    intakeHalfTop.move_velocity(0);
     midDescore.set_value(false);
 // wing.set_value(false);
 
